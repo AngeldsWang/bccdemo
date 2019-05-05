@@ -18,7 +18,7 @@ Vagrant.configure("2") do |config|
 
     cfg.vm.provision "docker", run: "always" do |d|
       d.run "bccdemo",
-          args: $run_args
+            args: $run_args
     end
   end
 end
