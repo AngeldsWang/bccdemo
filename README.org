@@ -4,4 +4,9 @@ Try bcc on docker with 4.9+ kernel
 
 ** Usage
 #+BEGIN_SRC bash
+$ git clone git@github.com:AngeldsWang/bccdemo.git
+$ cd bccdemo/
+$ vagrant up
+$ vagrant ssh
+$ docker attach bccdemo
 #+END_SRC
