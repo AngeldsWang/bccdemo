@@ -5,6 +5,7 @@ $run_args = <<EOS.chomp
 -v /lib/modules:/lib/modules:ro \
 -v /usr/src:/usr/src:ro \
 -v /etc/localtime:/etc/localtime:ro \
+-v /vagrant:/vagrant:ro \
 --workdir /usr/share/bcc/tools
 EOS
 
