@@ -10,3 +10,57 @@ $ vagrant up
 $ vagrant ssh
 $ docker attach bccdemo
 #+END_SRC
+
+** Example
+*** run memleaked script
+#+BEGIN_SRC bash
+root@602a69354de6:/usr/share/bcc/tools# perl /vagrant/memleaked.pl &
+[1] 38
+#+END_SRC
+
+*** tracing by bcc-memleak
+#+BEGIN_SRC bash
+root@602a69354de6:/usr/share/bcc/tools# ./memleak -p 38
+Attaching to pid 38, Ctrl+C to quit.
+[07:06:41] Top 10 stacks with outstanding allocations:
+        4072 bytes in 1 allocations from stack
+                Perl_safesyscalloc+0x1d [perl]
+        400000 bytes in 40000 allocations from stack
+                Perl_safesysmalloc+0x12 [perl]
+                [unknown]
+                [unknown]
+        640016 bytes in 181 allocations from stack
+                Perl_safesysmalloc+0x12 [perl]
+        966960 bytes in 237 allocations from stack
+                Perl_safesysmalloc+0x12 [perl]
+                [unknown]
+[07:06:47] Top 10 stacks with outstanding allocations:
+        8144 bytes in 2 allocations from stack
+                Perl_safesyscalloc+0x1d [perl]
+        980340 bytes in 98034 allocations from stack
+                Perl_safesysmalloc+0x12 [perl]
+                [unknown]
+                [unknown]
+        1584128 bytes in 448 allocations from stack
+                Perl_safesysmalloc+0x12 [perl]
+        2390880 bytes in 586 allocations from stack
+                Perl_safesysmalloc+0x12 [perl]
+                [unknown]
+        5239576 bytes in 1 allocations from stack
+                Perl_safesysrealloc+0x2a [perl]
+[07:06:53] Top 10 stacks with outstanding allocations:
+        16288 bytes in 4 allocations from stack
+                Perl_safesyscalloc+0x1d [perl]
+        1500000 bytes in 150000 allocations from stack
+                Perl_safesysmalloc+0x12 [perl]
+                [unknown]
+                [unknown]
+        2400944 bytes in 679 allocations from stack
+                Perl_safesysmalloc+0x12 [perl]
+        3618960 bytes in 887 allocations from stack
+                Perl_safesysmalloc+0x12 [perl]
+                [unknown]
+        5239576 bytes in 1 allocations from stack
+                Perl_safesysrealloc+0x2a [perl]
+#+END_SRC
+
