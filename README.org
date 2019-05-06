@@ -62,5 +62,10 @@ Attaching to pid 38, Ctrl+C to quit.
                 [unknown]
         5239576 bytes in 1 allocations from stack
                 Perl_safesysrealloc+0x2a [perl]
+...
+...
 #+END_SRC
 
+*Obviously, there is memory leak happening since the allocated bytes keep increasing for each sampling.*
+
+For other examples, please refer to [[https://github.com/iovisor/bcc#tools][bcc/tools]]
